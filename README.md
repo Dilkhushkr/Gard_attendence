@@ -32,7 +32,7 @@ Stack:
    - `npm install`
    - `npm run dev`
 
-Backend runs on `http://localhost:5000`.
+Backend runs on `http://localhost:3000`.
 
 ## Frontend Setup
 1. Go to `frontend`
@@ -42,7 +42,7 @@ Backend runs on `http://localhost:5000`.
    - Admin host: `npm run dev:admin`
 
 Frontend hosts:
-- User host: `http://localhost:5173`
-- Admin host: `http://localhost:5174`
+- User host: `http://localhost:5173/user/dashboard`
+- Admin host: `http://localhost:5173/admin/dashboard`
 
 Both hosts proxy API to backend.
