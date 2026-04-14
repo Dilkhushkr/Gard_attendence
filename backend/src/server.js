@@ -39,6 +39,9 @@ app.use(cors({
   credentials: true
 }));
 
+app.use(express.json());
+
+
 app.get("/api/health", (_, res) => {
   res.json({ ok: true, message: "Backend healthy" });
 });

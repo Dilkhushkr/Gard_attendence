@@ -27,6 +27,7 @@ async function signup(req, res) {
       user: { id: user._id, name: user.name, email: user.email, role: user.role }
     });
   } catch (error) {
+    console.error("Signup Error:", error);   
     return res.status(500).json({ error: "Signup failed" });
   }
 }
