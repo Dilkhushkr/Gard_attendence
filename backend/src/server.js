@@ -8,16 +8,36 @@ const adminRoutes = require("./routes/adminRoutes");
 
 dotenv.config();
 
+
 const app = express();
 const PORT = process.env.PORT || 3000;
-const allowedOrigins = [process.env.USER_HOST, process.env.ADMIN_HOST].filter(Boolean);
+// const allowedOrigins = [process.env.USER_HOST, process.env.ADMIN_HOST].filter(Boolean);
 
-app.use(
-  cors({
-    origin: allowedOrigins.length ? allowedOrigins : true
-  })
-);
-app.use(express.json());
+// app.use(
+//   cors({
+//     origin: allowedOrigins.length ? allowedOrigins : true
+//   })
+// );
+// app.use(express.json());
+
+const allowedOrigins = [
+  process.env.USER_HOST,
+  process.env.ADMIN_HOST
+].filter(Boolean);
+
+app.use(cors({
+  origin: function (origin, callback) {
+    // allow requests with no origin (like Postman)
+    if (!origin) return callback(null, true);
+
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    } else {
+      return callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true
+}));
 
 app.get("/api/health", (_, res) => {
   res.json({ ok: true, message: "Backend healthy" });

@@ -1,7 +1,12 @@
 const mongoose = require("mongoose");
 
 async function connectDb() {
-  const mongoUri = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/guard_tracking";
+  const mongoUri = process.env.MONGO_URI || process.env.MONGODB_URI;
+
+  if (!mongoUri) {
+    throw new Error("Missing MongoDB connection string. Set MONGO_URI in .env.");
+  }
+
   await mongoose.connect(mongoUri);
   console.log("MongoDB connected");
 }
