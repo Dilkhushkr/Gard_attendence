@@ -289,7 +289,7 @@ export default function AdminDashboardPage() {
                 Admin Dashboard
               </h1>
               <p style={{ margin: "4px 0 0", fontSize: 13, color: "#64748b" }}>
-                Live · auto-refreshes every 3s &nbsp;·&nbsp;{" "}
+                 &nbsp;·&nbsp;{" "}
                 {now.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", second: "2-digit" })}
               </p>
             </div>
