@@ -23,7 +23,7 @@ const PORT = process.env.PORT || 3000;
 const allowedOrigins = [
   process.env.USER_HOST,
   process.env.ADMIN_HOST,
-  "https://gard-attendance-app.netlify.app/"
+  "https://gard-attendance-app.netlify.app"
 ].filter(Boolean);
 
 app.use(cors({
